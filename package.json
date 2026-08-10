@@ -9,7 +9,8 @@
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "db:types": "supabase gen types typescript --local --schema public --schema internal | node -e \"let s=''; process.stdin.setEncoding('utf8'); process.stdin.on('data', d => s += d); process.stdin.on('end', () => process.stdout.write(s.trimEnd() + '\\n'));\" > src/types/database.generated.ts"
   },
   "dependencies": {
     "next": "16.3.0",
@@ -27,6 +28,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.0",
     "jsdom": "^29.1.1",
+    "supabase": "2.113.0",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^4.1.10"

@@ -1,9 +1,9 @@
 # CUMPAVIO — Project State
 
 **Last updated:** 2026-08-10
-**Current Stage:** Stage 1 — Repository & Engineering Foundation
-**Current status:** Stage 1 complete locally — push pending
-**Production status:** Engineering foundation established; business implementation not started
+**Current Stage:** Stage 2 — Supabase & Data Model Foundation
+**Current status:** Engineering implementation complete locally; Stage 2 closeout in progress
+**Production status:** Engineering and database foundations established; retailer feasibility and business ingestion not started
 
 ---
 
@@ -18,79 +18,90 @@ CUMPAVIO is a shopping intelligence platform focused on:
 
 **Data → Intelligence → Decision**
 
+The Product Contract remains the single source of truth for V1 scope.
+
 ---
 
 ## 2. Current Stage
 
-### Stage 1 — Repository & Engineering Foundation
+### Stage 2 — Supabase & Data Model Foundation
 
-Current objective:
+Objective:
 
-Establish a minimal, production-oriented and reproducible engineering foundation for CUMPAVIO without introducing Stage 2+ business implementation.
+Establish a professional, minimal, reproducible and auditable PostgreSQL/Supabase data foundation for CUMPAVIO without implementing retailer crawling, matching logic, public product flows or Stage 3+ functionality.
 
-Implemented foundation:
+Stage 2 engineering implementation is complete locally.
 
-- Next.js 16.3.0;
-- React 19.2.8;
-- TypeScript strict;
-- Tailwind CSS 4;
-- ESLint;
-- App Router;
-- `src/` structure;
-- `@/*` import alias;
-- Vitest;
-- React Testing Library;
-- GitHub Actions CI;
-- environment-variable conventions;
-- minimal application smoke page;
-- developer setup documentation.
+Current work is limited to:
 
-Stage 1 intentionally does not implement Supabase business schema, crawling, normalization, matching, search, product experience, price intelligence or Product Design.
+* documentation synchronization;
+* completion audit;
+* final repository inspection;
+* Stage 2 commit;
+* push after Product Owner confirmation;
+* Russian Stage 2 → Stage 3 Context Handoff.
 
-Completion audit passed.
+No Stage 3 implementation has started.
 
 ---
 
 ## 3. Current Status
 
-Stage 1 implementation and completion audit are complete.
+Implemented during Stage 2:
 
-Implemented during Stage 1:
-
-- Next.js web foundation;
-- React application foundation;
-- TypeScript strict mode;
-- Tailwind CSS;
-- ESLint;
-- App Router;
-- `src/` structure;
-- `@/*` import alias;
-- Vitest testing foundation;
-- React Testing Library;
-- GitHub Actions CI;
-- environment-variable conventions;
-- minimal smoke application;
-- developer setup documentation;
-- Stage 1 engineering documentation.
+* Supabase CLI local-development foundation;
+* exact Supabase CLI dependency pin;
+* isolated CUMPAVIO local Supabase port range;
+* migrations-first database workflow;
+* PostgreSQL business schema;
+* `public` canonical/public data boundary;
+* `internal` source/provenance boundary;
+* retailer/source provenance foundation;
+* crawl-run audit model;
+* source listing model;
+* immutable-source-observation foundation;
+* canonical Product Family model;
+* canonical Product Variant model;
+* product identifier model;
+* matching decision audit persistence;
+* Offer current-state model;
+* Price Observation history model;
+* price-quality states;
+* RLS boundaries;
+* least-privilege anonymous/authenticated public access;
+* internal schema isolation;
+* pgTAP structural tests;
+* pgTAP data-integrity tests;
+* pgTAP RLS/access tests;
+* generated TypeScript database types;
+* reproducible `db:types` command;
+* ESLint exclusion for generated Supabase CLI temporary runtime files.
 
 Validated successfully:
 
-- `npm run lint`;
-- `npm run typecheck`;
-- `npm test`;
-- `npm run build`;
-- `git diff --check`;
-- complete staged Stage 1 scope review.
+* `npm run lint`;
+* `npm run typecheck`;
+* `npm test`;
+* `npm run build`;
+* `npx supabase test db`;
+* `npx supabase db reset --debug`;
+* `npm run db:types`;
+* `npx supabase migration list --local`;
+* `git diff --check`.
 
-Stage 1 engineering foundation commit:
+Database test result:
 
-`447335b feat: establish Stage 1 engineering foundation`
+* 3 database test files;
+* 38 database tests;
+* all passing.
 
-The final Stage 1 metadata synchronization commit is pending.
+RLS validation:
 
-No Stage 2 implementation has been introduced.
-
-Remote push is pending Product Owner confirmation.
+* 11 Stage 2 business tables checked;
+* RLS enabled on all 11 tables;
+* anonymous/public read behavior tested;
+* forbidden writes tested;
+* `internal` access denial tested.
 
 ---
 
@@ -109,6 +120,8 @@ Status:
 `Scope Frozen`
 
 The Product Contract is the single source of truth for CUMPAVIO V1 scope.
+
+No Stage 2 decision changes the frozen product scope.
 
 ---
 
@@ -133,7 +146,7 @@ Target if feasibility permits:
 
 * 5 production-quality retailer sources
 
-Retailer names are not guaranteed until Data Feasibility review.
+Retailer names are not guaranteed until formal Data Feasibility review.
 
 ### Core public capabilities
 
@@ -202,10 +215,6 @@ Retailer names are not guaranteed until Data Feasibility review.
 
 ## 7. Current Architecture
 
-The web engineering foundation is implemented.
-
-Business/data production architecture is not implemented yet.
-
 Frozen conceptual data path:
 
 **Retailer
@@ -219,53 +228,361 @@ Frozen conceptual data path:
 → Price Intelligence
 → Public Experience**
 
-Key rule:
+Stage 2 implements the persistence foundation required by this architecture, but does not implement normalization, matching execution, retailer ingestion or price intelligence.
 
-Raw/source representations must remain sufficiently auditable and separate from canonical interpretation.
+### Database schema boundary
+
+`public`
+
+Contains canonical and potentially public-facing business data.
+
+`internal`
+
+Contains retailer-source, crawl, raw/source observation, provenance and matching-audit data.
+
+The `internal` schema is intentionally excluded from the public Data API exposure boundary.
+
+### Core Stage 2 tables
+
+Public:
+
+* `public.retailers`
+* `public.product_families`
+* `public.product_variants`
+* `public.product_variant_identifiers`
+* `public.offers`
+* `public.price_observations`
+
+Internal:
+
+* `internal.retailer_sources`
+* `internal.crawl_runs`
+* `internal.source_listings`
+* `internal.source_listing_observations`
+* `internal.product_match_records`
 
 ---
 
-## 8. Technology Decisions
+## 8. Data Model Decisions
 
-Planned direction:
+### Product Family and Variant
+
+Product Family and Product Variant remain separate entities.
+
+A family represents the canonical product line/model.
+
+A variant represents an exact purchasable configuration belonging to the family.
+
+### Raw/source vs canonical
+
+Retailer-source representations are not canonical product records.
+
+Source data remains attributable and auditable separately from canonical interpretation.
+
+### Matching
+
+Stage 2 contains only matching decision persistence/audit infrastructure.
+
+It does not implement a matching engine.
+
+Future matching priority remains:
+
+1. EAN/GTIN;
+2. manufacturer identifiers;
+3. MPN/model identifiers;
+4. normalized brand/model;
+5. category-specific variant attributes;
+6. deterministic rules;
+7. constrained fuzzy matching;
+8. manual review.
+
+False-positive matching remains more dangerous than false-negative matching.
+
+Uncertain records must not be silently auto-merged.
+
+### Offer vs Price Observation
+
+`Offer` represents current retailer/variant state.
+
+`Price Observation` represents historical price state.
+
+Historical observations remain source-attributable.
+
+### Price quality
+
+Price observation quality states:
+
+* `pending`
+* `accepted`
+* `suspicious`
+* `rejected`
+
+Only accepted observations are exposed through the current public RLS read policy.
+
+Suspicious and rejected observations remain available for audit but must not silently enter trusted public history.
+
+### Comparable price
+
+Comparable product price is modeled separately from retailer marketing concepts such as:
+
+* installment payment;
+* monthly payment;
+* cashback;
+* claimed savings;
+* promotional text.
+
+### Money
+
+Comparable prices use fixed-precision PostgreSQL numeric values.
+
+Currency is explicit and constrained to uppercase three-character currency codes.
+
+### Time
+
+Database event timestamps use `timestamptz`.
+
+### IDs
+
+Business entities use UUID primary keys.
+
+---
+
+## 9. Security State
+
+**Status:** Stage 2 database boundary implemented.
+
+Implemented:
+
+* RLS enabled on all Stage 2 business tables;
+* anonymous/authenticated public roles receive read-only table privileges where explicitly required;
+* no public INSERT/UPDATE/DELETE privileges;
+* no public write RLS policies;
+* inactive retailers/products/offers are excluded by public read policies where applicable;
+* only accepted price observations are publicly readable;
+* `internal` schema access revoked from `public`, `anon` and `authenticated`;
+* default privileges for future postgres-owned internal objects are hardened;
+* internal helper trigger function execution revoked from public client roles.
+
+Public Auth remains outside V1.
+
+Supabase Auth domain implementation has not been introduced.
+
+Internal/admin Auth remains deferred until the product reaches the stage where an actual internal workflow requires it.
+
+Server/service credentials must never be exposed through `NEXT_PUBLIC_*`.
+
+---
+
+## 10. Supabase Local Development
+
+Supabase CLI:
+
+`2.113.0`
+
+Installed as an exact dev dependency.
+
+Local development is migrations-first.
+
+Primary local workflow:
+
+1. `npx supabase start`
+2. apply/rebuild from migrations with `npx supabase db reset --debug`
+3. run database tests with `npx supabase test db`
+4. regenerate TypeScript database types with `npm run db:types`
+
+### Local CUMPAVIO port range
+
+CUMPAVIO uses a dedicated local port range to avoid conflicts with other Supabase projects:
+
+* API: `55321`
+* PostgreSQL: `55322`
+* Studio: `55323`
+* Mailpit: `55324`
+* Analytics reserved port: `55327`
+* Pooler reserved port: `55329`
+* Shadow database: `55320`
+
+### Intentionally disabled local services
+
+* Analytics
+* Realtime
+
+Realtime is not required by the Stage 2/V1 data foundation and was disabled after local Realtime tenant-state collisions were observed during repeated database reset validation.
+
+Other CLI-managed services may also remain stopped when not required by the current Stage.
+
+Local development credentials are development-only defaults and must never be used as production credentials.
+
+---
+
+## 11. Migration State
+
+Stage 2 migrations:
+
+`20260810191149_create_stage2_data_foundation.sql`
+
+Contains:
+
+* schemas;
+* enums;
+* shared timestamp helper;
+* source/provenance tables;
+* canonical catalog tables;
+* matching audit persistence;
+* offers;
+* price observations;
+* indexes;
+* constraints;
+* triggers.
+
+`20260810193139_establish_stage2_rls_boundaries.sql`
+
+Contains:
+
+* RLS activation;
+* explicit grants/revokes;
+* public read policies;
+* internal schema isolation;
+* default privilege hardening;
+* helper-function privilege hardening.
+
+Both migrations have been successfully applied together from a clean local database using:
+
+`npx supabase db reset --debug`
+
+---
+
+## 12. Generated Database Types
+
+Generated TypeScript database contract:
+
+`src/types/database.generated.ts`
+
+Generated from both:
+
+* `public`
+* `internal`
+
+Reproducible command:
+
+`npm run db:types`
+
+Generated files must not be manually edited.
+
+The type contract is regenerated from the migration-built local database.
+
+---
+
+## 13. Testing State
+
+### Web/application tests
+
+Framework:
+
+* Vitest;
+* React Testing Library;
+* jsdom.
+
+Current application result:
+
+* 1 test file;
+* 1 test;
+* all passing.
+
+### Database tests
+
+Location:
+
+`supabase/tests/database/`
+
+Current suites:
+
+* `001_stage2_structure.test.sql`
+* `002_stage2_integrity.test.sql`
+* `003_stage2_rls.test.sql`
+
+Current result:
+
+* 3 files;
+* 38 tests;
+* all passing.
+
+The database suites validate:
+
+* schema/table existence;
+* primary keys;
+* critical foreign keys;
+* price constraints;
+* currency constraints;
+* matching confidence constraints;
+* matching decision consistency;
+* source timestamp ordering;
+* crawl timestamp ordering;
+* valid accepted price insertion;
+* public read filtering;
+* forbidden public writes;
+* internal schema isolation.
+
+Future Stage-specific test suites remain deferred until corresponding functionality exists.
+
+---
+
+## 14. Technology Decisions
 
 ### Web
 
-* Next.js
-* React
+Implemented:
+
+* Next.js 16.3.0
+* React 19.2.8
 * TypeScript strict
-* Tailwind CSS
-* shadcn/ui
-* Zod
-* TanStack Query only where justified
+* Tailwind CSS 4
+* ESLint
+* App Router
+* `src/`
+* `@/*`
+* Vitest
+* React Testing Library
+
+Not yet introduced because no current Stage requires them:
+
+* shadcn/ui;
+* Zod;
+* TanStack Query;
+* Playwright.
 
 ### Platform / Data
 
-* Supabase
-* PostgreSQL
-* Supabase Auth for internal/admin V1 authentication
-* Supabase Storage where appropriate
-* Row Level Security
-* migrations
+Implemented:
+
+* Supabase local development;
+* PostgreSQL;
+* migrations;
+* RLS;
+* generated TypeScript DB types;
+* pgTAP database tests.
+
+Not yet implemented:
+
+* hosted Supabase production project integration;
+* application Supabase client;
+* internal Auth;
+* Storage business usage.
 
 ### Data Collection
+
+Planned direction:
 
 * Python
 * httpx
 * BeautifulSoup/lxml
 * Playwright only when necessary
 
+No crawler implementation exists yet.
+
 ### Search
 
-* PostgreSQL-first
-
-### Testing
-
-* frontend/unit tests where useful
-* pytest
-* parser fixtures
-* matching golden datasets
-* Playwright E2E
+PostgreSQL-first.
 
 ### Deployment direction
 
@@ -274,39 +591,13 @@ Planned direction:
 * Supabase
 * separate crawler/worker runtime
 
-Implemented Stage 1 web-foundation versions are recorded in `docs/stages/stage-01.md`.
-
-Future Stage-specific dependency versions remain unfrozen until they are actually introduced.
+No production deployment exists yet.
 
 ---
 
-## 9. Architecture Decisions
+## 15. Data Sources
 
-### ADR-level decisions already frozen
-
-1. CUMPAVIO is not a marketplace.
-2. Search never triggers synchronous retailer crawling.
-3. Raw/source listings and canonical products are separate.
-4. Product Family and Product Variant are distinct concepts.
-5. False-positive matching is more dangerous than false-negative matching.
-6. Low-confidence products are not auto-merged.
-7. V1 matching is deterministic/fuzzy/manual, not LLM-based.
-8. Price history is based on source-attributable observations.
-9. Price anomalies must not silently corrupt historical metrics.
-10. Price intelligence is deterministic and explainable.
-11. Public Auth is excluded from V1.
-12. AI is excluded from V1.
-13. Brand/Product Design occurs before full public product implementation.
-14. PostgreSQL search is used before considering a separate search engine.
-15. Crawler runtime is separate from interactive web requests.
-
-Future formal ADR files may reference these decisions, but must not change them without following Product Contract rules.
-
----
-
-## 10. Data Sources
-
-**Status:** Not researched in implementation yet.
+**Status:** Formal feasibility validation not started.
 
 Candidate research pool:
 
@@ -318,206 +609,151 @@ Candidate research pool:
 * Maximum
 * other relevant Moldova electronics retailers
 
-No source is technically or legally guaranteed yet.
+No retailer is technically or legally guaranteed yet.
 
-Stage 3 performs formal feasibility validation.
+Formal retailer feasibility belongs to Stage 3.
 
 ---
 
-## 11. Database State
+## 16. Connector State
 
 **Status:** Not started.
 
-Database implementation belongs to Stage 2.
+No production retailer connector, parser or crawler exists.
 
-No schema has been created.
+No synchronous crawl can be triggered from a public user request.
+
+Connector implementation must follow formal feasibility validation.
 
 ---
 
-## 12. Connector State
+## 17. Matching State
+
+**Status:** Database audit foundation implemented; matching execution not started.
+
+Implemented:
+
+* matching status model;
+* matching method model;
+* optional confidence;
+* evidence payload;
+* decision timestamp;
+* supersession timestamp;
+* canonical variant reference.
+
+Not implemented:
+
+* normalization engine;
+* deterministic matching engine;
+* fuzzy matching;
+* manual review workflow;
+* matching UI.
+
+AI matching remains Post-MVP.
+
+---
+
+## 18. Public Product State
 
 **Status:** Not started.
 
-Connector implementation begins only after Stage 2 and Stage 3 requirements are reached.
+No Stage 2 work introduced:
+
+* production landing;
+* search;
+* category experience;
+* product page;
+* price history UI;
+* comparison UI;
+* retailer outbound flow.
+
+Brand and Product Design remain governed by later stages.
 
 ---
 
-## 13. Matching State
+## 19. Data Quality State
 
-**Status:** Concept frozen; implementation not started.
+**Status:** Database-level foundation implemented; real-world validation pending.
 
-Frozen matching hierarchy:
+Implemented:
 
-1. EAN/GTIN;
-2. manufacturer identifiers;
-3. MPN/model identifiers;
-4. normalized brand/model;
-5. category-specific variant attributes;
-6. deterministic rules;
-7. constrained fuzzy matching;
-8. manual review.
+* provenance entities;
+* source observations;
+* crawl audit records;
+* parser status;
+* matching review states;
+* observation quality states;
+* suspicious/rejected price preservation;
+* accepted-history access boundary;
+* freshness timestamps.
 
-AI matching is Post-MVP.
+Not yet validated against real retailer data:
 
----
+* actual identifier quality;
+* real anomaly thresholds;
+* source-specific stale thresholds;
+* parser behavior;
+* crawl cadence;
+* retailer-specific data quality.
 
-## 14. Public Product State
-
-**Status:** Not started.
-
-No landing, search, product page or comparison UI has been implemented.
-
-Brand and visual design remain unfrozen until Stage 6.
-
-Previous visual/logo concepts are references only.
+These require Stage 3 and later data stages.
 
 ---
 
-## 15. Data Quality State
+## 20. Environment / Secrets State
 
-**Status:** Requirements defined; implementation not started.
+`.env.example` remains the tracked environment template.
 
-V1 requires:
+`.env*` files are ignored except the approved example file.
 
-* provenance;
-* freshness;
-* stale handling;
-* parser monitoring;
-* matching review;
-* anomaly handling;
-* auditability.
+Rules remain:
 
----
+* browser-safe variables only may use `NEXT_PUBLIC_*`;
+* service/database secrets must remain server-only;
+* secrets must never be committed;
+* local Supabase development credentials are not production credentials.
 
-## 16. Testing State
-
-**Status:** Web testing foundation established.
-
-Stage 1 includes:
-
-- Vitest;
-- React Testing Library;
-- jsdom;
-- React component smoke test.
-
-Current test command:
-
-`npm test`
-
-Current result:
-
-- 1 test file;
-- 1 test;
-- all passing.
-
-Playwright E2E is intentionally deferred until real user flows exist.
-
-Future testing requirements remain:
-
-- pytest;
-- connector fixture tests;
-- parser regression tests;
-- matching golden dataset;
-- price-intelligence regression tests;
-- Playwright critical E2E.
+Stage 2 did not add application environment variables because no web runtime Supabase integration is currently required.
 
 ---
 
-## 17. Deployment State
+## 21. Known Local Development Notes
 
-**Status:** Production deployment not started.
+1. Another local Supabase project may use the default `5432x` ports, therefore CUMPAVIO uses the dedicated `5532x` range.
+2. On this Windows/Docker environment, a normal `supabase db reset` occasionally failed during Supabase service initialization while the same migration reset succeeded with `--debug`.
+3. Realtime produced duplicate local `realtime-dev` tenant-state errors during repeated reset validation and is intentionally disabled because Realtime is not required for this Stage.
+4. Analytics is disabled because it is not required by the Stage 2 development workflow.
+5. `supabase/.temp/**` contains CLI-generated local runtime artifacts and is excluded from ESLint.
+6. Git may display LF → CRLF working-copy warnings on Windows; these are not validation failures.
 
-Current Stage 1 infrastructure:
-
-- GitHub repository;
-- GitHub Actions CI.
-
-CI currently validates:
-
-1. dependency installation;
-2. lint;
-3. typecheck;
-4. tests;
-5. production build.
-
-Future deployment direction remains:
-
-- Vercel — web;
-- Supabase — database/platform;
-- separate worker environment — data collection.
-
-No production deployment exists.
+None of these issues currently block Stage 2 completion.
 
 ---
 
-## 18. Security State
+## 22. Current Blockers
 
-**Status:** Requirements frozen; implementation not started.
+No blocker currently prevents Stage 2 completion.
 
-Important future requirements:
+Remaining Stage 2 closeout actions:
 
-* RLS;
-* least privilege;
-* server-only service credentials;
-* internal admin authorization;
-* safe outbound URLs;
-* crawler SSRF protection;
-* environment secret isolation;
-* security launch review.
+1. finalize `docs/stages/stage-02.md`;
+2. synchronize this project-state document;
+3. perform Stage 2 completion audit;
+4. inspect final diff;
+5. stage intended files;
+6. run final staged validation;
+7. create Stage 2 commit;
+8. verify clean working tree;
+9. push only after Product Owner confirmation;
+10. verify `main` equals `origin/main`;
+11. prepare Russian Stage 2 → Stage 3 Context Handoff;
+12. prepare Russian Stage 3 new-chat prompt.
 
----
-
-## 19. Legal / Data State
-
-Stage 0 principles:
-
-* technical accessibility is not treated as blanket permission;
-* every retailer receives individual feasibility/restrictions review;
-* robots and relevant terms are investigated;
-* image provenance must be considered;
-* CUMPAVIO must not imply retailer partnerships that do not exist;
-* applicable Moldova privacy/e-commerce requirements must be reviewed before launch;
-* final CUMPAVIO trademark/domain legal verification is required before public commercial launch.
-
-No legal approval for any specific retailer source has been recorded yet.
+No Stage 3 implementation may begin before Stage 2 closeout.
 
 ---
 
-## 20. Known Issues
-
-Current known issues:
-
-1. Specific V1 retailer list is not yet known.
-2. Real identifier quality is not yet known.
-3. Actual source-page/API structures are not yet known.
-4. Crawl cadence cannot be finalized before store feasibility testing.
-5. Product-image licensing/provenance strategy requires source-specific research.
-6. Exact price-intelligence thresholds require real observation data and Stage 8 validation.
-
-None of these justify expanding V1 scope.
-
----
-
-## 21. Current Blockers
-
-No blockers currently prevent Stage 1 completion.
-
-Remaining Stage 1 closeout actions:
-
-1. finalize Stage 1 documentation;
-2. perform the completion audit;
-3. run all final validations;
-4. inspect the complete repository diff;
-5. create the Stage 1 commit;
-6. verify the working tree is clean after commit;
-7. push only after Product Owner confirmation;
-8. prepare the Russian Stage 1 → Stage 2 Context Handoff.
-
-No Stage 2 implementation may begin before Stage 1 is closed.
-
----
-
-## 22. Completed Stages
+## 23. Completed Stages
 
 ### Stage 0 — Product Contract & Scope Freeze
 
@@ -539,68 +775,93 @@ Stage 0 is synchronized to GitHub `main`.
 
 ### Stage 1 — Repository & Engineering Foundation
 
-**Status:** Complete locally — push pending.
+Completed and synchronized to GitHub `main`.
 
-Stage 1 engineering foundation commit:
+Engineering foundation commit:
 
 `447335b feat: establish Stage 1 engineering foundation`
+
+Final Stage 1 state commit:
+
+`7430f1f docs: finalize Stage 1 state`
 
 Implemented:
 
-- Next.js application foundation;
-- React;
-- TypeScript strict;
-- Tailwind CSS;
-- ESLint;
-- App Router;
-- test foundation;
-- CI foundation;
-- environment conventions;
-- repository/developer documentation.
+* Next.js foundation;
+* React;
+* TypeScript strict;
+* Tailwind CSS;
+* ESLint;
+* App Router;
+* test foundation;
+* CI foundation;
+* environment conventions;
+* repository/developer documentation.
 
-No Stage 2 implementation has been introduced.
+### Stage 2 — Supabase & Data Model Foundation
 
----
+**Status:** Engineering implementation complete locally; closeout in progress.
 
-## 23. Last Completed Work
+Implemented:
 
-Stage 1 — Repository & Engineering Foundation was completed locally.
+* Supabase local foundation;
+* PostgreSQL schema;
+* migrations;
+* provenance/source data model;
+* canonical product model;
+* matching audit persistence;
+* offer/history model;
+* RLS;
+* database security boundary;
+* pgTAP tests;
+* generated TypeScript database types.
 
-Stage 1 commit:
-
-`447335b feat: establish Stage 1 engineering foundation`
-
-Final local validation status:
-
-- lint passes;
-- typecheck passes;
-- Vitest passes;
-- production build passes;
-- `git diff --check` passes;
-- working tree was clean after the Stage 1 commit.
-
-No Stage 2 implementation has been introduced.
-
-Remote push is pending Product Owner confirmation.
+Stage 2 commit has not yet been created.
 
 ---
 
-## 24. Next Exact Step
+## 24. Last Completed Work
 
-Complete the Stage 1 remote closeout:
+Stage 2 engineering implementation and technical validation are complete locally.
 
-1. commit final Stage 1 metadata synchronization;
-2. verify clean working tree;
-3. push `main` only after Product Owner confirmation;
-4. verify local `main` matches `origin/main`;
-5. prepare the Russian Stage 1 → Stage 2 Context Handoff;
-6. prepare the Russian Stage 2 new-chat prompt.
+Final engineering validation:
 
-Do not begin Stage 2 in this chat.
+* `npm run lint` — pass;
+* `npm run typecheck` — pass;
+* `npm test` — pass;
+* `npm run build` — pass;
+* `npx supabase test db` — 38/38 pass;
+* RLS metadata check — 11/11 business tables enabled;
+* `npx supabase db reset --debug` — pass;
+* `npm run db:types` — pass;
+* both Stage 2 migrations present and applied locally;
+* `git diff --check` — pass.
+
+Current work is Stage 2 documentation and repository closeout only.
 
 ---
 
-## 25. Repository Status
+## 25. Next Exact Step
+
+Complete Stage 2 closeout:
+
+1. finalize `docs/stages/stage-02.md`;
+2. perform Stage 2 Definition of Done audit;
+3. inspect the complete Stage 2 diff;
+4. stage only intended Stage 2 files;
+5. run staged validation;
+6. create the Stage 2 commit;
+7. verify clean working tree;
+8. push only after Product Owner confirmation;
+9. verify local `main` equals `origin/main`;
+10. prepare the Russian Stage 2 → Stage 3 Context Handoff;
+11. prepare the Russian Stage 3 new-chat prompt.
+
+Do not implement Stage 3 in this chat.
+
+---
+
+## 26. Repository Status
 
 Repository:
 
@@ -618,35 +879,42 @@ Remote tracking:
 
 `main → origin/main`
 
-Stage 1 has been committed locally and has not yet been pushed to `origin/main`.
+Current remote baseline:
 
-The repository now contains:
+`7430f1f docs: finalize Stage 1 state`
 
-- Stage 0 documentation;
-- Next.js application foundation;
-- test foundation;
-- GitHub Actions CI;
-- Stage 1 documentation.
+Stage 2 changes currently exist locally and are not yet committed.
 
-No Supabase business schema, crawler, retailer connector, matching implementation or public product implementation exists.
+The repository now locally contains:
+
+* Stage 0 documentation;
+* Stage 1 web engineering foundation;
+* GitHub Actions CI;
+* Supabase local configuration;
+* Stage 2 PostgreSQL migrations;
+* Stage 2 database tests;
+* generated TypeScript database types;
+* Stage 2 documentation.
+
+No crawler, retailer connector, matching engine, public product implementation or production deployment exists.
 
 ---
 
-## 26. Last Commit
+## 27. Last Commit
 
-Current local Stage 1 engineering foundation commit:
+Current committed baseline:
 
-`447335b0a8e48831a4ebe6014735aa11985bd7b5`
+`7430f1fe550ae0b45e71d85defbc388a661c2ce1`
 
 Commit:
 
-`feat: establish Stage 1 engineering foundation`
+`docs: finalize Stage 1 state`
 
-The final Stage 1 metadata synchronization commit will follow before push.
+Stage 2 changes remain uncommitted until the completion audit passes.
 
 ---
 
-## 27. Last Updated
+## 28. Last Updated
 
 2026-08-10
 
