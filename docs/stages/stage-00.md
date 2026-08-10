@@ -3,7 +3,7 @@
 ## Product Contract & Scope Freeze
 
 **Stage:** 0
-**Status:** Completed locally — remote sync pending
+**Status:** Complete
 **Started:** 2026-08-10
 **Completed:** 2026-08-10
 **Production code allowed:** No
@@ -770,8 +770,8 @@ Before marking Stage 0 complete verify:
 * [x] Cross-document final audit performed
 * [x] Git status verified
 * [x] Stage 0 commit created
-* [ ] Push approved by Product Owner
-* [ ] Stage 1 Context Handoff prepared
+* [x] Push approved by Product Owner
+* [x] Stage 1 Context Handoff prepared
 
 ---
 
@@ -824,18 +824,16 @@ Stage 0 is complete when:
 **Scope-freeze commit:** `387245f`
 **Working tree after scope-freeze commit:** Clean
 **Remote repository:** Confirmed as `SuhihAlex/cumpavio`
-**Remote synchronization:** Pending Product Owner approval
-**Context Handoff:** Pending
+**Remote synchronization:** Complete
+**Context Handoff:** Prepared
 
-Stage implementation work is complete.
+Stage 0 is complete.
 
-Only administrative Stage 0 closeout remains:
+All Stage 0 product, documentation, repository and remote synchronization requirements are satisfied.
 
-1. commit this closeout state;
-2. synchronize the confirmed remote after approval;
-3. prepare Context Handoff.
+Stage 1 must begin in a new chat.
 
-Do not begin Stage 1 in this chat.
+No Stage 1 implementation was performed in this chat.
 
 ---
 
@@ -845,7 +843,11 @@ Primary scope-freeze commit:
 
 `387245f docs: freeze CUMPAVIO v1 product scope`
 
-The final closeout documentation commit hash will be recorded in the Stage 0 → Stage 1 Context Handoff.
+Stage 0 closeout commit:
+
+`63fa505 docs: close Stage 0`
+
+A final metadata synchronization commit records the completed remote/handoff state.
 
 ---
 
