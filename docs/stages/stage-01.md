@@ -3,7 +3,8 @@
 ## Repository & Engineering Foundation
 
 **Stage:** 1
-**Status:** In Progress
+**Status:** Complete
+**Completed:** 2026-08-10
 **Started:** 2026-08-10
 **Production code allowed:** Foundation only
 **Scope boundary:** No Stage 2+ implementation
@@ -418,9 +419,9 @@ Stage 1 is complete only when:
 - [x] `docs/project-state.md` reflects the implemented Stage 1 state;
 - [x] final repository completion audit passes;
 - [x] final quality validation suite passes;
-- [ ] complete staged diff is reviewed;
-- [ ] Stage 1 commit is created;
-- [ ] working tree is clean after commit;
+- [x] complete staged diff is reviewed;
+- [x] Stage 1 commit is created;
+- [x] working tree is clean after commit;
 - [ ] push is performed only after Product Owner confirmation;
 - [ ] Stage 1 → Stage 2 Context Handoff is prepared in Russian;
 - [ ] Stage 2 new-chat prompt is prepared in Russian.
@@ -469,7 +470,34 @@ No manual deletion or dependency workaround was introduced.
 
 ## 16. Commit
 
-Pending.
+Stage 1 engineering foundation commit:
+
+`447335b0a8e48831a4ebe6014735aa11985bd7b5`
+
+Commit message:
+
+`feat: establish Stage 1 engineering foundation`
+
+Commit contents:
+
+- Next.js application foundation;
+- React;
+- TypeScript strict;
+- Tailwind CSS;
+- ESLint;
+- Vitest and React Testing Library;
+- GitHub Actions CI;
+- environment conventions;
+- repository hygiene;
+- developer README;
+- Stage 1 documentation.
+
+Post-commit verification:
+
+- local `main` contains the Stage 1 commit;
+- working tree was clean immediately after the commit;
+- local `main` is ahead of `origin/main`;
+- push is pending Product Owner confirmation.
 
 ---
 

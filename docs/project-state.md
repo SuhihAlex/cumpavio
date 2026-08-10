@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-08-10
 **Current Stage:** Stage 1 — Repository & Engineering Foundation
-**Current status:** Stage 1 completion audit passed — commit pending
+**Current status:** Stage 1 complete locally — push pending
 **Production status:** Engineering foundation established; business implementation not started
 
 ---
@@ -53,7 +53,7 @@ Completion audit passed.
 
 ## 3. Current Status
 
-Stage 1 implementation is complete and awaiting final completion audit.
+Stage 1 implementation and completion audit are complete.
 
 Implemented during Stage 1:
 
@@ -79,13 +79,18 @@ Validated successfully:
 - `npm run typecheck`;
 - `npm test`;
 - `npm run build`;
-- `git diff --check`.
+- `git diff --check`;
+- complete staged Stage 1 scope review.
 
-Stage 1 has not yet been committed or pushed.
+Stage 1 engineering foundation commit:
+
+`447335b feat: establish Stage 1 engineering foundation`
+
+The final Stage 1 metadata synchronization commit is pending.
 
 No Stage 2 implementation has been introduced.
 
-The next action is the final Stage 1 completion audit and closeout.
+Remote push is pending Product Owner confirmation.
 
 ---
 
@@ -534,7 +539,11 @@ Stage 0 is synchronized to GitHub `main`.
 
 ### Stage 1 — Repository & Engineering Foundation
 
-**Status:** Completion audit passed — commit pending.
+**Status:** Complete locally — push pending.
+
+Stage 1 engineering foundation commit:
+
+`447335b feat: establish Stage 1 engineering foundation`
 
 Implemented:
 
@@ -555,32 +564,37 @@ No Stage 2 implementation has been introduced.
 
 ## 23. Last Completed Work
 
-Stage 1 engineering foundation was implemented and validated locally.
+Stage 1 — Repository & Engineering Foundation was completed locally.
 
-Current validation status:
+Stage 1 commit:
+
+`447335b feat: establish Stage 1 engineering foundation`
+
+Final local validation status:
 
 - lint passes;
 - typecheck passes;
 - Vitest passes;
 - production build passes;
-- `git diff --check` passes.
+- `git diff --check` passes;
+- working tree was clean after the Stage 1 commit.
 
-The repository now has a functional Next.js web foundation but no business data model or Stage 2 implementation.
+No Stage 2 implementation has been introduced.
+
+Remote push is pending Product Owner confirmation.
 
 ---
 
 ## 24. Next Exact Step
 
-Complete the Stage 1 closeout:
+Complete the Stage 1 remote closeout:
 
-1. finalize `docs/stages/stage-01.md`;
-2. perform repository completion audit;
-3. run all final quality checks;
-4. inspect staged diff;
-5. create the Stage 1 commit;
-6. verify clean working tree;
-7. push only after Product Owner confirmation;
-8. prepare the Russian Stage 1 → Stage 2 Context Handoff.
+1. commit final Stage 1 metadata synchronization;
+2. verify clean working tree;
+3. push `main` only after Product Owner confirmation;
+4. verify local `main` matches `origin/main`;
+5. prepare the Russian Stage 1 → Stage 2 Context Handoff;
+6. prepare the Russian Stage 2 new-chat prompt.
 
 Do not begin Stage 2 in this chat.
 
@@ -604,7 +618,7 @@ Remote tracking:
 
 `main → origin/main`
 
-Stage 1 currently exists only in the local working tree and has not yet been committed.
+Stage 1 has been committed locally and has not yet been pushed to `origin/main`.
 
 The repository now contains:
 
@@ -620,17 +634,15 @@ No Supabase business schema, crawler, retailer connector, matching implementatio
 
 ## 26. Last Commit
 
-Current repository HEAD before the Stage 1 commit:
+Current local Stage 1 engineering foundation commit:
 
-`2ace7f24cd27b709715e0a1214758de5ea69e65b`
+`447335b0a8e48831a4ebe6014735aa11985bd7b5`
 
 Commit:
 
-`docs: correct final Stage 0 state`
+`feat: establish Stage 1 engineering foundation`
 
-All Stage 1 changes are currently uncommitted in the local working tree.
-
-The Stage 1 commit will be recorded here during Stage 1 closeout.
+The final Stage 1 metadata synchronization commit will follow before push.
 
 ---
 
