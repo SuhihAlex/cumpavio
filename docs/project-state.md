@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-08-10
 **Current Stage:** Stage 0 — Product Contract & Scope Freeze
-**Current status:** Stage 0 closeout in progress
+**Current status:** Stage 0 completed locally; remote sync and Context Handoff pending
 **Production status:** Not started
 
 ---
@@ -47,15 +47,18 @@ Completed in Stage 0:
 * roadmap simplified;
 * Product Contract v1.0 prepared.
 
-Remaining before Stage 0 can be marked complete:
+Stage 0 local closeout completed:
 
-* persist Stage 0 documents in repository;
-* perform Stage 0 completion audit;
-* verify documentation consistency;
-* verify git status;
-* create Stage 0 commit;
-* push only after Product Owner approval;
-* create Context Handoff for Stage 1.
+- Stage 0 documents persisted in repository;
+- documentation consistency audited;
+- no Stage 1 implementation introduced;
+- scope-freeze commit created;
+- working tree verified clean after the scope-freeze commit.
+
+Remaining external closeout actions:
+
+- synchronize `main` with the confirmed GitHub repository after Product Owner approval;
+- prepare the final Stage 0 → Stage 1 Context Handoff.
 
 No Stage 1 work may begin before this closeout is complete.
 
@@ -437,24 +440,29 @@ None of these justify expanding V1 scope.
 
 ## 21. Current Blockers
 
-No Stage 0 product blocker remains.
+No product or engineering blockers remain for Stage 0.
 
-Operational closeout still required:
+Remote repository confirmed:
 
-* save documentation;
-* audit;
-* commit;
-* optional approved push.
+`SuhihAlex/cumpavio`
 
-Stage 1 is intentionally blocked until Stage 0 closeout.
+Remote `main` does not yet exist because the GitHub repository is empty.
+
+Final remote synchronization requires explicit Product Owner approval.
 
 ---
 
 ## 22. Completed Stages
 
-None formally closed yet.
+### Stage 0 — Product Contract & Scope Freeze
 
-Stage 0 will move here only after completion audit and repository commit.
+Completed locally on 2026-08-10.
+
+Scope-freeze commit:
+
+`387245f docs: freeze CUMPAVIO v1 product scope`
+
+Final remote synchronization and Context Handoff are the remaining administrative closeout actions.
 
 ---
 
@@ -476,42 +484,44 @@ Major scope reductions:
 
 ## 24. Next Exact Step
 
-Remain inside Stage 0.
+Remain inside Stage 0 until remote synchronization and Context Handoff are complete.
 
 Next actions:
 
-1. create/persist `docs/product-contract.md`;
-2. create/persist `docs/project-state.md`;
-3. create/persist `docs/stages/stage-00.md`;
-4. audit all three documents against each other;
-5. verify no Stage 1 implementation has been introduced;
-6. commit Stage 0 documentation;
-7. request Product Owner approval before pushing;
-8. prepare Stage 1 Context Handoff and new-chat prompt.
+1. commit Stage 0 closeout documentation;
+2. verify clean git status;
+3. synchronize `main` with the confirmed GitHub repository only after Product Owner approval;
+4. verify local `main` and `origin/main`;
+5. prepare the final Stage 0 → Stage 1 Context Handoff;
+6. start Stage 1 only in a new chat.
 
-Do **not** scaffold Next.js or Supabase during this step.
+Do not scaffold Next.js or Supabase in this chat.
 
 ---
 
 ## 25. Repository Status
 
-At the time this initial Project State document is prepared:
+Local repository initialized.
 
-**Repository engineering foundation:** Not started.
+Branch:
 
-Stage 0 is permitted to create only the minimal Git/docs structure required to persist Stage 0 governance documentation.
+`main`
 
-Update this section after the Stage 0 repository audit.
+Confirmed remote:
+
+`https://github.com/SuhihAlex/cumpavio.git`
+
+GitHub repository is currently empty before first push.
+
+Stage 0 contains documentation only.
+
+No Next.js, Supabase, crawler or production application implementation exists.
 
 ---
 
 ## 26. Last Commit
 
-Not yet created for Stage 0.
-
-Replace after Stage 0 documentation commit with:
-
-The Stage 0 documentation commit hash is recorded in the final Context Handoff after the commit is created.
+`387245f docs: freeze CUMPAVIO v1 product scope`
 
 ---
 

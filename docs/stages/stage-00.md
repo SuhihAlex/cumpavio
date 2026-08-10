@@ -3,9 +3,9 @@
 ## Product Contract & Scope Freeze
 
 **Stage:** 0
-**Status:** Closeout pending
+**Status:** Completed locally — remote sync pending
 **Started:** 2026-08-10
-**Completed:** Pending
+**Completed:** 2026-08-10
 **Production code allowed:** No
 
 ---
@@ -766,10 +766,10 @@ Before marking Stage 0 complete verify:
 * [x] Stage roadmap frozen
 * [x] V1 Definition of Done defined
 * [x] Scope Freeze rules defined
-* [ ] Documents persisted in repository
-* [ ] Cross-document final audit performed
-* [ ] Git status verified
-* [ ] Stage 0 commit created
+* [x] Documents persisted in repository
+* [x] Cross-document final audit performed
+* [x] Git status verified
+* [x] Stage 0 commit created
 * [ ] Push approved by Product Owner
 * [ ] Stage 1 Context Handoff prepared
 
@@ -818,32 +818,34 @@ Stage 0 is complete when:
 **Non-goals:** Approved
 **Post-MVP boundary:** Approved
 **Roadmap:** Approved
-**Product Contract:** Prepared
-**Repository persistence:** Pending
-**Git audit:** Pending
-**Commit:** Pending
-**Push:** Pending Product Owner approval
+**Product Contract:** Persisted
+**Repository persistence:** Complete
+**Git audit:** Complete
+**Scope-freeze commit:** `387245f`
+**Working tree after scope-freeze commit:** Clean
+**Remote repository:** Confirmed as `SuhihAlex/cumpavio`
+**Remote synchronization:** Pending Product Owner approval
 **Context Handoff:** Pending
 
-Stage status therefore remains:
+Stage implementation work is complete.
 
-**CLOSEOUT PENDING**
+Only administrative Stage 0 closeout remains:
 
-Do not begin Stage 1 yet.
+1. commit this closeout state;
+2. synchronize the confirmed remote after approval;
+3. prepare Context Handoff.
+
+Do not begin Stage 1 in this chat.
 
 ---
 
 ## 34. Git Commit
 
-Pending.
+Primary scope-freeze commit:
 
-Recommended Stage 0 commit message:
+`387245f docs: freeze CUMPAVIO v1 product scope`
 
-`docs: freeze CUMPAVIO v1 product scope`
-
-After commit, record:
-
-The resulting commit hash is recorded in the final Stage 0 Context Handoff after the commit is created.
+The final closeout documentation commit hash will be recorded in the Stage 0 → Stage 1 Context Handoff.
 
 ---
 
