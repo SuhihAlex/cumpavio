@@ -47,20 +47,19 @@ Completed in Stage 0:
 * roadmap simplified;
 * Product Contract v1.0 prepared.
 
-Stage 0 local closeout completed:
+Stage 0 completed:
 
-- Stage 0 documents persisted in repository;
-- documentation consistency audited;
+- Product Contract v1.0 accepted and scope frozen;
+- Stage 0 documents persisted and audited;
 - no Stage 1 implementation introduced;
-- scope-freeze commit created;
-- working tree verified clean after the scope-freeze commit.
+- scope-freeze and closeout commits created;
+- GitHub remote confirmed;
+- `main` synchronized with `origin/main`;
+- final Stage 0 Context Handoff prepared.
 
-Remaining external closeout actions:
+Stage 0 is closed.
 
-- synchronize `main` with the confirmed GitHub repository after Product Owner approval;
-- prepare the final Stage 0 → Stage 1 Context Handoff.
-
-No Stage 1 work may begin before this closeout is complete.
+The next project action is Stage 1 — Repository & Engineering Foundation in a new chat.
 
 ---
 
@@ -536,9 +535,11 @@ No Next.js, Supabase, crawler or production application implementation exists ye
 
 ## 26. Last Commit
 
-`63fa505 docs: close Stage 0`
+Stage 0 metadata synchronization commit:
 
-A final metadata synchronization commit may follow this commit to record the completed remote state.
+`3b71bda docs: finalize Stage 0 handoff state`
+
+The repository HEAD may advance with documentation-only metadata corrections; Git history remains the authoritative record of the current HEAD.
 
 ---
 

@@ -847,7 +847,9 @@ Stage 0 closeout commit:
 
 `63fa505 docs: close Stage 0`
 
-A final metadata synchronization commit records the completed remote/handoff state.
+Stage 0 handoff-state commit:
+
+`3b71bda docs: finalize Stage 0 handoff state`
 
 ---
 
