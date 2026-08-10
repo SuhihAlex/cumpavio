@@ -1,9 +1,9 @@
 # CUMPAVIO — Project State
 
 **Last updated:** 2026-08-10
-**Current Stage:** Stage 0 — Product Contract & Scope Freeze
-**Current status:** Stage 0 complete — ready for Stage 1 in a new chat
-**Production status:** Not started
+**Current Stage:** Stage 1 — Repository & Engineering Foundation
+**Current status:** Stage 1 completion audit passed — commit pending
+**Production status:** Engineering foundation established; business implementation not started
 
 ---
 
@@ -22,44 +22,70 @@ CUMPAVIO is a shopping intelligence platform focused on:
 
 ## 2. Current Stage
 
-### Stage 0 — Product Contract & Scope Freeze
+### Stage 1 — Repository & Engineering Foundation
 
 Current objective:
 
-Freeze the CUMPAVIO V1 product scope, architecture direction, roadmap, non-goals and Definition of Done before any engineering implementation begins.
+Establish a minimal, production-oriented and reproducible engineering foundation for CUMPAVIO without introducing Stage 2+ business implementation.
+
+Implemented foundation:
+
+- Next.js 16.3.0;
+- React 19.2.8;
+- TypeScript strict;
+- Tailwind CSS 4;
+- ESLint;
+- App Router;
+- `src/` structure;
+- `@/*` import alias;
+- Vitest;
+- React Testing Library;
+- GitHub Actions CI;
+- environment-variable conventions;
+- minimal application smoke page;
+- developer setup documentation.
+
+Stage 1 intentionally does not implement Supabase business schema, crawling, normalization, matching, search, product experience, price intelligence or Product Design.
+
+Completion audit passed.
 
 ---
 
 ## 3. Current Status
 
-Completed in Stage 0:
+Stage 1 implementation is complete and awaiting final completion audit.
 
-* product concept reviewed;
-* scope risks reviewed;
-* V1 categories decided;
-* retailer strategy decided;
-* matching philosophy decided;
-* V1 user/account decision made;
-* V1 AI decision made;
-* price-intelligence direction decided;
-* admin/data-quality requirement decided;
-* language scope decided;
-* roadmap simplified;
-* Product Contract v1.0 prepared.
+Implemented during Stage 1:
 
-Stage 0 completed:
+- Next.js web foundation;
+- React application foundation;
+- TypeScript strict mode;
+- Tailwind CSS;
+- ESLint;
+- App Router;
+- `src/` structure;
+- `@/*` import alias;
+- Vitest testing foundation;
+- React Testing Library;
+- GitHub Actions CI;
+- environment-variable conventions;
+- minimal smoke application;
+- developer setup documentation;
+- Stage 1 engineering documentation.
 
-- Product Contract v1.0 accepted and scope frozen;
-- Stage 0 documents persisted and audited;
-- no Stage 1 implementation introduced;
-- scope-freeze and closeout commits created;
-- GitHub remote confirmed;
-- `main` synchronized with `origin/main`;
-- final Stage 0 Context Handoff prepared.
+Validated successfully:
 
-Stage 0 is closed.
+- `npm run lint`;
+- `npm run typecheck`;
+- `npm test`;
+- `npm run build`;
+- `git diff --check`.
 
-The next project action is Stage 1 — Repository & Engineering Foundation in a new chat.
+Stage 1 has not yet been committed or pushed.
+
+No Stage 2 implementation has been introduced.
+
+The next action is the final Stage 1 completion audit and closeout.
 
 ---
 
@@ -171,7 +197,9 @@ Retailer names are not guaranteed until Data Feasibility review.
 
 ## 7. Current Architecture
 
-No production architecture has been implemented yet.
+The web engineering foundation is implemented.
+
+Business/data production architecture is not implemented yet.
 
 Frozen conceptual data path:
 
@@ -241,7 +269,9 @@ Planned direction:
 * Supabase
 * separate crawler/worker runtime
 
-Exact implementation versions are not frozen until Stage 1.
+Implemented Stage 1 web-foundation versions are recorded in `docs/stages/stage-01.md`.
+
+Future Stage-specific dependency versions remain unfrozen until they are actually introduced.
 
 ---
 
@@ -356,34 +386,60 @@ V1 requires:
 
 ## 16. Testing State
 
-**Status:** Not started.
+**Status:** Web testing foundation established.
 
-Testing foundation begins Stage 1.
+Stage 1 includes:
 
-Future requirements include:
+- Vitest;
+- React Testing Library;
+- jsdom;
+- React component smoke test.
 
-* lint;
-* typecheck;
-* production build;
-* application tests;
-* pytest;
-* connector fixture tests;
-* parser regression;
-* matching golden dataset;
-* price-intelligence tests;
-* Playwright critical E2E.
+Current test command:
+
+`npm test`
+
+Current result:
+
+- 1 test file;
+- 1 test;
+- all passing.
+
+Playwright E2E is intentionally deferred until real user flows exist.
+
+Future testing requirements remain:
+
+- pytest;
+- connector fixture tests;
+- parser regression tests;
+- matching golden dataset;
+- price-intelligence regression tests;
+- Playwright critical E2E.
 
 ---
 
 ## 17. Deployment State
 
-**Status:** Not started.
+**Status:** Production deployment not started.
 
-Direction:
+Current Stage 1 infrastructure:
 
-* Vercel — web;
-* Supabase — database/platform;
-* separate worker environment — data collection.
+- GitHub repository;
+- GitHub Actions CI.
+
+CI currently validates:
+
+1. dependency installation;
+2. lint;
+3. typecheck;
+4. tests;
+5. production build.
+
+Future deployment direction remains:
+
+- Vercel — web;
+- Supabase — database/platform;
+- separate worker environment — data collection.
 
 No production deployment exists.
 
@@ -439,19 +495,20 @@ None of these justify expanding V1 scope.
 
 ## 21. Current Blockers
 
-No blockers remain for Stage 0.
+No blockers currently prevent Stage 1 completion.
 
-Remote repository:
+Remaining Stage 1 closeout actions:
 
-`SuhihAlex/cumpavio`
+1. finalize Stage 1 documentation;
+2. perform the completion audit;
+3. run all final validations;
+4. inspect the complete repository diff;
+5. create the Stage 1 commit;
+6. verify the working tree is clean after commit;
+7. push only after Product Owner confirmation;
+8. prepare the Russian Stage 1 → Stage 2 Context Handoff.
 
-Branch:
-
-`main`
-
-Local `main` is synchronized with `origin/main`.
-
-Stage 1 may begin only in a new chat using the final Stage 0 Context Handoff.
+No Stage 2 implementation may begin before Stage 1 is closed.
 
 ---
 
@@ -469,41 +526,63 @@ Stage 0 closeout commit:
 
 `63fa505 docs: close Stage 0`
 
+Final Stage 0 state commit:
+
+`2ace7f2 docs: correct final Stage 0 state`
+
 Stage 0 is synchronized to GitHub `main`.
+
+### Stage 1 — Repository & Engineering Foundation
+
+**Status:** Completion audit passed — commit pending.
+
+Implemented:
+
+- Next.js application foundation;
+- React;
+- TypeScript strict;
+- Tailwind CSS;
+- ESLint;
+- App Router;
+- test foundation;
+- CI foundation;
+- environment conventions;
+- repository/developer documentation.
+
+No Stage 2 implementation has been introduced.
 
 ---
 
 ## 23. Last Completed Work
 
-CUMPAVIO Product Contract v1.0 was defined and its V1 scope frozen in the Stage 0 conversation.
+Stage 1 engineering foundation was implemented and validated locally.
 
-Major scope reductions:
+Current validation status:
 
-* 2 categories instead of 6;
-* minimum 3 production stores instead of broad retailer coverage;
-* no public accounts;
-* no alerts;
-* no V1 AI;
-* no opaque Deal Score;
-* no native/mobile/browser extension scope.
+- lint passes;
+- typecheck passes;
+- Vitest passes;
+- production build passes;
+- `git diff --check` passes.
+
+The repository now has a functional Next.js web foundation but no business data model or Stage 2 implementation.
 
 ---
 
 ## 24. Next Exact Step
 
-Start Stage 1 — Repository & Engineering Foundation in a new chat.
+Complete the Stage 1 closeout:
 
-Before implementation, the Stage 1 chat must:
+1. finalize `docs/stages/stage-01.md`;
+2. perform repository completion audit;
+3. run all final quality checks;
+4. inspect staged diff;
+5. create the Stage 1 commit;
+6. verify clean working tree;
+7. push only after Product Owner confirmation;
+8. prepare the Russian Stage 1 → Stage 2 Context Handoff.
 
-1. read `docs/product-contract.md`;
-2. read `docs/project-state.md`;
-3. read `docs/stages/stage-00.md`;
-4. inspect current `main`;
-5. verify clean repository state;
-6. create `docs/stages/stage-01.md`;
-7. execute only Stage 1 scope.
-
-Do not begin Stage 2, Supabase schema implementation, crawling, product matching or public product development during Stage 1.
+Do not begin Stage 2 in this chat.
 
 ---
 
@@ -525,21 +604,33 @@ Remote tracking:
 
 `main → origin/main`
 
-Stage 0 is synchronized to GitHub.
+Stage 1 currently exists only in the local working tree and has not yet been committed.
 
-Repository currently contains Stage 0 documentation only.
+The repository now contains:
 
-No Next.js, Supabase, crawler or production application implementation exists yet.
+- Stage 0 documentation;
+- Next.js application foundation;
+- test foundation;
+- GitHub Actions CI;
+- Stage 1 documentation.
+
+No Supabase business schema, crawler, retailer connector, matching implementation or public product implementation exists.
 
 ---
 
 ## 26. Last Commit
 
-Stage 0 metadata synchronization commit:
+Current repository HEAD before the Stage 1 commit:
 
-`3b71bda docs: finalize Stage 0 handoff state`
+`2ace7f24cd27b709715e0a1214758de5ea69e65b`
 
-The repository HEAD may advance with documentation-only metadata corrections; Git history remains the authoritative record of the current HEAD.
+Commit:
+
+`docs: correct final Stage 0 state`
+
+All Stage 1 changes are currently uncommitted in the local working tree.
+
+The Stage 1 commit will be recorded here during Stage 1 closeout.
 
 ---
 
