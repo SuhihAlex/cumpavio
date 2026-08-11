@@ -1227,8 +1227,8 @@ Stage 3 is complete when:
 * [x] Stage 3 commit created
 * [x] working tree clean after commit
 * [ ] push performed only after Product Owner confirmation
-* [ ] Stage 3 → Stage 4 Context Handoff prepared in Russian
-* [ ] Stage 4 new-chat prompt prepared in Russian
+* [x] Stage 3 → Stage 4 Context Handoff prepared in Russian
+* [x] Stage 4 new-chat prompt prepared in Russian
 
 ---
 
