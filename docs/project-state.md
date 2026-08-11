@@ -1,9 +1,9 @@
 # CUMPAVIO — Project State
 
 **Last updated:** 2026-08-11
-**Current Stage:** Stage 2 — Supabase & Data Model Foundation
-**Current status:** Stage 2 complete — synchronized to GitHub main
-**Production status:** Engineering and database foundations established; retailer feasibility and business ingestion not started
+**Current Stage:** Stage 3 — Data Feasibility & First Store Proof
+**Current status:** Stage 3 implementation complete — final completion audit pending
+**Production status:** Engineering and database foundations established; retailer feasibility proven and non-production First Store Proof validated; production ingestion not started
 
 ---
 
@@ -24,84 +24,132 @@ The Product Contract remains the single source of truth for V1 scope.
 
 ## 2. Current Stage
 
-### Stage 2 — Supabase & Data Model Foundation
+### Stage 3 — Data Feasibility & First Store Proof
 
 Objective:
 
-Establish a professional, minimal, reproducible and auditable PostgreSQL/Supabase data foundation for CUMPAVIO without implementing retailer crawling, matching logic, public product flows or Stage 3+ functionality.
+Prove that CUMPAVIO can obtain sufficiently structured, attributable and operationally viable retailer data for the frozen V1 categories before building the production multi-store ingestion system.
 
-Stage 2 engineering implementation is complete locally.
+Stage 3 technical implementation and feasibility validation are complete.
+
+Validated during Stage 3:
+
+- retailer feasibility for the frozen V1 categories;
+- at least three technically strong retailer candidates;
+- sitemap-first discovery feasibility;
+- ordinary HTTP product retrieval;
+- structured Product JSON-LD usefulness and limitations;
+- retailer/source identifier semantics;
+- comparable-price semantics;
+- retailer-specific availability semantics;
+- locale duplication risk;
+- anti-bot constraints;
+- responsible sourcing constraints;
+- one constrained Ultra First Store Proof;
+- transactional persistence through the Stage 2 data model;
+- preliminary engineering source direction for Stage 4.
 
 Current work is limited to:
 
-* documentation synchronization;
-* completion audit;
-* final repository inspection;
-* Stage 2 commit;
-* push after Product Owner confirmation;
-* Russian Stage 2 → Stage 3 Context Handoff.
+- project-state synchronization;
+- final Stage 3 documentation review;
+- final repository and quality audit;
+- Stage 3 commit;
+- push only after Product Owner confirmation;
+- Russian Stage 3 → Stage 4 Context Handoff;
+- Russian Stage 4 new-chat prompt.
 
-No Stage 3 implementation has started.
+No Stage 4 production ingestion implementation has started.
 
 ---
 
 ## 3. Current Status
 
-Implemented during Stage 2:
+Completed foundations from Stage 1 and Stage 2 remain in place:
 
-* Supabase CLI local-development foundation;
-* exact Supabase CLI dependency pin;
-* isolated CUMPAVIO local Supabase port range;
-* migrations-first database workflow;
-* PostgreSQL business schema;
-* `public` canonical/public data boundary;
-* `internal` source/provenance boundary;
-* retailer/source provenance foundation;
-* crawl-run audit model;
-* source listing model;
-* immutable-source-observation foundation;
-* canonical Product Family model;
-* canonical Product Variant model;
-* product identifier model;
-* matching decision audit persistence;
-* Offer current-state model;
-* Price Observation history model;
-* price-quality states;
-* RLS boundaries;
-* least-privilege anonymous/authenticated public access;
-* internal schema isolation;
-* pgTAP structural tests;
-* pgTAP data-integrity tests;
-* pgTAP RLS/access tests;
-* generated TypeScript database types;
-* reproducible `db:types` command;
-* ESLint exclusion for generated Supabase CLI temporary runtime files.
+- Next.js engineering foundation;
+- TypeScript strict;
+- Tailwind CSS;
+- ESLint;
+- Vitest and React Testing Library;
+- CI validation workflow;
+- Supabase local-development foundation;
+- migrations-first PostgreSQL workflow;
+- `public` canonical/public data boundary;
+- `internal` source/provenance data boundary;
+- retailer/source provenance model;
+- crawl-run audit model;
+- source listing and immutable source-observation model;
+- Product Family and Product Variant separation;
+- product identifier model;
+- matching decision audit persistence;
+- Offer current-state model;
+- Price Observation history model;
+- price-quality states;
+- RLS and least-privilege access boundaries;
+- generated TypeScript database types;
+- pgTAP database validation.
 
-Validated successfully:
+Stage 3 feasibility work completed:
 
-* `npm run lint`;
-* `npm run typecheck`;
-* `npm test`;
-* `npm run build`;
-* `npx supabase test db`;
-* `npx supabase db reset --debug`;
-* `npm run db:types`;
-* `npx supabase migration list --local`;
-* `git diff --check`.
+- Enter investigated for Smartphones and Laptops;
+- Darwin investigated for Smartphones and Laptops;
+- Ultra investigated for Smartphones and Laptops;
+- Bomba investigated as a higher-risk fallback;
+- minimum of three technically strong V1 retailer candidates identified;
+- Enter classified `Approved with constraints`;
+- Darwin classified `Approved with constraints`;
+- Ultra classified `Approved with constraints`;
+- Bomba classified `Research further / fallback candidate`;
+- sitemap-first discovery validated for Enter, Darwin and Ultra;
+- ordinary HTTP product retrieval validated for Enter, Darwin and Ultra;
+- Playwright confirmed unnecessary for the tested primary flows of Enter, Darwin and Ultra;
+- structured Product JSON-LD sampled and its limitations documented;
+- retailer/source identifier semantics validated;
+- manufacturer/article identifier quality sampled;
+- comparable full purchase price semantics validated;
+- installment/cashback/promotional values explicitly separated from comparable price;
+- availability semantics investigated at retailer level;
+- Romanian/Russian locale duplication risk documented;
+- anti-bot/access constraints documented;
+- responsible sourcing and data-use boundaries documented;
+- Ultra selected as the First Store Proof retailer;
+- one Laptop and one Smartphone Ultra sample validated;
+- Ultra visible availability semantics proven more authoritative than conflicting JSON-LD availability;
+- transactional persistence through the Stage 2 data model validated;
+- controlled manual canonical association validated;
+- Offer persistence validated;
+- accepted Price Observation persistence validated;
+- proof transaction rollback validated with zero residual proof retailer rows;
+- initial Stage 4 source implementation priority finalized as Ultra → Enter → Darwin.
 
-Database test result:
+Stage 3 intentionally did not introduce:
 
-* 3 database test files;
-* 38 database tests;
-* all passing.
+- production retailer crawling;
+- production crawl scheduling;
+- production retry/orchestration infrastructure;
+- multi-store production ingestion;
+- browser-rendering infrastructure;
+- normalization engine;
+- automatic product matching;
+- fuzzy matching;
+- canonical catalog population at scale;
+- public product/search flows;
+- price intelligence;
+- production deployment.
 
-RLS validation:
+Current Stage 3 closeout work:
 
-* 11 Stage 2 business tables checked;
-* RLS enabled on all 11 tables;
-* anonymous/public read behavior tested;
-* forbidden writes tested;
-* `internal` access denial tested.
+- synchronize remaining project-state sections;
+- perform final documentation review;
+- run relevant quality validation;
+- perform final repository audit;
+- review staged diff;
+- create Stage 3 commit;
+- verify clean working tree;
+- push only after Product Owner confirmation;
+- prepare Russian Stage 3 → Stage 4 Context Handoff;
+- prepare Russian Stage 4 new-chat prompt.
 
 ---
 
@@ -597,33 +645,154 @@ No production deployment exists yet.
 
 ## 15. Data Sources
 
-**Status:** Formal feasibility validation not started.
+**Status:** Stage 3 feasibility validation complete.
 
-Candidate research pool:
+Evaluated retailer pool:
 
-* Enter
-* Darwin
-* Bomba
-* Ultra
-* Cactus
-* Maximum
-* other relevant Moldova electronics retailers
+- Enter;
+- Darwin;
+- Bomba;
+- Ultra.
 
-No retailer is technically or legally guaranteed yet.
+Current classifications:
 
-Formal retailer feasibility belongs to Stage 3.
+- Enter — `Approved with constraints`;
+- Darwin — `Approved with constraints`;
+- Ultra — `Approved with constraints`;
+- Bomba — `Research further / fallback candidate`.
+
+The frozen V1 minimum requirement of three technically strong retailer candidates is satisfied by:
+
+1. Ultra;
+2. Enter;
+3. Darwin.
+
+Initial Stage 4 implementation priority:
+
+1. Ultra;
+2. Enter;
+3. Darwin.
+
+Bomba is not part of the initial production ingestion priority because ordinary anonymous HTTP retrieval was blocked in the tested client and its operational/anti-bot complexity is materially higher.
+
+Validated source characteristics:
+
+- Enter, Darwin and Ultra support both Smartphones and Laptops;
+- sitemap-based product discovery is available for Enter, Darwin and Ultra;
+- ordinary HTTP product retrieval works for Enter, Darwin and Ultra;
+- Product JSON-LD is available and useful on sampled product pages;
+- browser rendering was not required for the tested primary product flows;
+- identifier semantics vary by retailer and must remain source-specific;
+- Ultra exposes the strongest tested combination of source product ID and article/manufacturer-style identifier;
+- comparable full purchase price must remain distinct from installments, cashback and promotional values;
+- retailer-specific availability semantics must be preserved;
+- Romanian/Russian locale representations may describe the same underlying source listing and must not create duplicate physical offers.
+
+Selected First Store Proof retailer:
+
+**Ultra**
+
+The Ultra proof validated:
+
+- one Laptop sample;
+- one Smartphone sample;
+- scoped parsing;
+- comparable MDL price;
+- source identifiers;
+- availability semantics;
+- JSON-LD/visible availability disagreement handling;
+- transactional persistence through the Stage 2 model;
+- controlled manual canonical association;
+- Offer persistence;
+- accepted Price Observation persistence;
+- mandatory rollback with no residual proof retailer data.
+
+Source preference hierarchy remains:
+
+1. official permitted API/feed;
+2. sitemap/documented discovery;
+3. structured data such as JSON-LD;
+4. ordinary HTTP parsing;
+5. browser rendering only where genuinely necessary and appropriate.
+
+Ultra's official B2B/API opportunity should be investigated before public HTML parsing is treated as its permanent production source.
+
+Technical feasibility does not establish:
+
+- retailer partnership;
+- unrestricted commercial reuse permission;
+- permission to rehost retailer product images;
+- final production-launch legal approval.
 
 ---
 
 ## 16. Connector State
 
-**Status:** Not started.
+**Status:** Feasibility proof validated; production connectors not started.
 
-No production retailer connector, parser or crawler exists.
+Stage 3 introduced one intentionally non-production retailer proof:
 
-No synchronous crawl can be triggered from a public user request.
+`proofs/stage-03/ultra/proof.py`
 
-Connector implementation must follow formal feasibility validation.
+Validated Ultra proof capabilities:
+
+* ordinary HTTP retrieval;
+* scoped primary-product parsing;
+* Product JSON-LD parsing;
+* retailer source product ID extraction;
+* article/manufacturer-style identifier extraction;
+* visible comparable-price extraction;
+* JSON-LD price cross-check;
+* online availability interpretation;
+* showroom availability interpretation;
+* cart-action interpretation;
+* notify-when-available interpretation;
+* detection of visible/JSON-LD availability disagreement;
+* Laptop and Smartphone sample validation.
+
+Persistence proof:
+
+`proofs/stage-03/ultra/persistence-proof.sql`
+
+The persistence proof validated the path:
+
+**Retailer
+→ Retailer Source
+→ Crawl Run
+→ Source Listing
+→ Source Listing Observation
+→ controlled manual Product Match
+→ Canonical Variant
+→ Offer
+→ Price Observation**
+
+The persistence proof runs transactionally and ends with `ROLLBACK`.
+
+No Stage 3 proof data is intended to remain in the database.
+
+Production connector state:
+
+* Ultra production connector — not started;
+* Enter production connector — not started;
+* Darwin production connector — not started;
+* Bomba production connector — not planned for initial Stage 4 priority;
+* production discovery orchestration — not started;
+* crawl scheduling — not started;
+* retry orchestration — not started;
+* worker deployment — not started;
+* multi-store ingestion — not started.
+
+Initial Stage 4 implementation priority:
+
+1. Ultra;
+2. Enter;
+3. Darwin.
+
+The Stage 3 Ultra proof must not be silently promoted into production architecture without the Stage 4 engineering work required for durability, observability, retries, rate control, source-state handling and tests.
+
+No synchronous retailer crawl may be triggered from a public user request.
+
+Crawler/worker execution must remain separate from the interactive web runtime.
 
 ---
 
@@ -657,7 +826,7 @@ AI matching remains Post-MVP.
 
 **Status:** Not started.
 
-No Stage 2 work introduced:
+No Stage 1–3 work has introduced:
 
 * production landing;
 * search;
@@ -673,30 +842,68 @@ Brand and Product Design remain governed by later stages.
 
 ## 19. Data Quality State
 
-**Status:** Database-level foundation implemented; real-world validation pending.
+**Status:** Database-level quality foundation implemented; initial real-retailer validation completed during Stage 3.
 
-Implemented:
+Implemented foundation:
 
-* provenance entities;
-* source observations;
-* crawl audit records;
-* parser status;
-* matching review states;
-* observation quality states;
-* suspicious/rejected price preservation;
-* accepted-history access boundary;
-* freshness timestamps.
+- source provenance entities;
+- immutable source observations;
+- crawl audit records;
+- parser status;
+- matching review states;
+- price observation quality states;
+- suspicious/rejected price preservation;
+- accepted-history access boundary;
+- freshness timestamps.
 
-Not yet validated against real retailer data:
+Validated against real retailer data during Stage 3:
 
-* actual identifier quality;
-* real anomaly thresholds;
-* source-specific stale thresholds;
-* parser behavior;
-* crawl cadence;
-* retailer-specific data quality.
+- source identifiers vary materially by retailer;
+- retailer JSON-LD `mpn` semantics cannot be trusted blindly;
+- Enter exposes a useful retailer/source product code;
+- Darwin exposes a useful internal/source product ID;
+- Ultra exposes a strong source product ID through `Cod produs`;
+- Ultra exposes a strong article/manufacturer-style identifier through `Articol`;
+- full-page substring extraction can produce false-positive variant evidence;
+- primary product parsing must therefore remain scoped;
+- visible comparable product price can be distinguished from installment, cashback and promotional values;
+- sampled Ultra visible prices matched JSON-LD prices;
+- availability semantics are retailer-specific;
+- Ultra online and showroom availability are separate dimensions;
+- Ultra visible availability can conflict with JSON-LD availability;
+- Ultra visible badge/icon state and purchase-action semantics are more authoritative than JSON-LD availability for the validated flow;
+- Romanian/Russian retailer locales may represent the same physical source listing;
+- browser rendering is not required for the tested Enter, Darwin and Ultra primary product flows;
+- Bomba carries materially higher anti-bot/operational risk for ordinary HTTP collection.
 
-These require Stage 3 and later data stages.
+Validated First Store Proof quality behavior:
+
+- available Laptop sample parsed successfully;
+- unavailable Smartphone sample parsed successfully;
+- source identifiers preserved;
+- article identifiers preserved;
+- comparable MDL prices preserved;
+- availability state preserved;
+- JSON-LD/visible availability disagreement preserved;
+- controlled manual canonical association succeeded;
+- accepted Price Observations persisted successfully;
+- persistence assertions passed;
+- transaction rollback left no residual proof retailer data.
+
+Still not finalized:
+
+- production anomaly thresholds;
+- production stale-data thresholds;
+- crawl cadence;
+- retry policy;
+- rate limits;
+- long-term source stability;
+- multi-store parser regression behavior;
+- production normalization rules;
+- production matching confidence thresholds;
+- legal/commercial data-use approval per source.
+
+These remaining items belong to Stage 4 and later stages where the corresponding production ingestion behavior is implemented.
 
 ---
 
@@ -713,7 +920,7 @@ Rules remain:
 * secrets must never be committed;
 * local Supabase development credentials are not production credentials.
 
-Stage 2 did not add application environment variables because no web runtime Supabase integration is currently required.
+No application Supabase environment variables are currently required because web-runtime Supabase integration has not been introduced.
 
 ---
 
@@ -721,35 +928,40 @@ Stage 2 did not add application environment variables because no web runtime Sup
 
 1. Another local Supabase project may use the default `5432x` ports, therefore CUMPAVIO uses the dedicated `5532x` range.
 2. On this Windows/Docker environment, a normal `supabase db reset` occasionally failed during Supabase service initialization while the same migration reset succeeded with `--debug`.
-3. Realtime produced duplicate local `realtime-dev` tenant-state errors during repeated reset validation and is intentionally disabled because Realtime is not required for this Stage.
-4. Analytics is disabled because it is not required by the Stage 2 development workflow.
+3. Realtime produced duplicate local `realtime-dev` tenant-state errors during repeated reset validation and remains intentionally disabled because Realtime is not required by the current product architecture.
+4. Analytics remains disabled because it is not required by the current local development workflow.
 5. `supabase/.temp/**` contains CLI-generated local runtime artifacts and is excluded from ESLint.
 6. Git may display LF → CRLF working-copy warnings on Windows; these are not validation failures.
+7. During Stage 3, one normal `npx supabase start` attempt reported temporary unhealthy Storage/Studio startup state. The stack was started diagnostically with `--ignore-health-check`, after which PostgreSQL, Storage, Studio, Auth, Kong and related required services became healthy. A subsequent normal `npx supabase status` confirmed the local development setup was running.
+8. Stage 3 Python proof tooling is isolated under `proofs/stage-03/ultra/`. Local Python artifacts including `.venv`, `__pycache__`, `.pytest_cache` and `*.egg-info` are ignored and must not be committed.
 
-None of these issues currently block Stage 2 completion.
+None of these issues currently block Stage 3 completion.
 
 ---
 
 ## 22. Current Blockers
 
-No blocker currently prevents Stage 2 completion.
+No blocker currently prevents Stage 3 completion.
 
-Remaining Stage 2 closeout actions:
+Remaining Stage 3 closeout actions:
 
-1. finalize `docs/stages/stage-02.md`;
-2. synchronize this project-state document;
-3. perform Stage 2 completion audit;
-4. inspect final diff;
-5. stage intended files;
-6. run final staged validation;
-7. create Stage 2 commit;
-8. verify clean working tree;
-9. push only after Product Owner confirmation;
-10. verify `main` equals `origin/main`;
-11. prepare Russian Stage 2 → Stage 3 Context Handoff;
-12. prepare Russian Stage 3 new-chat prompt.
+1. finalize `docs/stages/stage-03.md`;
+2. finish synchronization of this project-state document;
+3. run the Ultra parser proof validation;
+4. run the Ultra transactional persistence proof validation;
+5. run the existing application and database quality checks;
+6. perform the final Stage 3 repository audit;
+7. inspect the complete diff;
+8. stage only intended Stage 3 files;
+9. run final staged validation;
+10. create the Stage 3 commit;
+11. verify the working tree is clean;
+12. push only after Product Owner confirmation;
+13. verify `main` equals `origin/main`;
+14. prepare the Russian Stage 3 → Stage 4 Context Handoff;
+15. prepare the Russian Stage 4 new-chat prompt.
 
-No Stage 3 implementation may begin before Stage 2 closeout.
+Stage 4 implementation must not begin until Stage 3 closeout is complete.
 
 ---
 

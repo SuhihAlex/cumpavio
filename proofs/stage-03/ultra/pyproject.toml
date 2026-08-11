@@ -1,0 +1,20 @@
+[project]
+name = "cumpavio-stage3-ultra-proof"
+version = "0.1.0"
+description = "Non-production Ultra retailer feasibility proof for CUMPAVIO Stage 3"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "httpx==0.28.1",
+  "beautifulsoup4==4.15.0",
+  "lxml==6.1.1",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest==9.1.1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-q"
