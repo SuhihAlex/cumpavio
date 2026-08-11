@@ -949,9 +949,11 @@ No blocker prevents transition to Stage 4.
 
 Stage 3 is complete and synchronized to GitHub `main`.
 
-Final Stage 3 HEAD before Stage 4:
+Stage 3 repository state is finalized and synchronized to GitHub `main`.
 
-`485d13e74e34eda15bd259258819051db79c5035`
+The authoritative repository revision must be obtained from Git with:
+
+`git rev-parse HEAD`
 
 Completed Stage 3 closeout:
 
