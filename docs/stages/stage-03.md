@@ -1224,8 +1224,8 @@ Stage 3 is complete when:
 * [x] relevant quality validation passes
 * [x] `git diff --check` passes
 * [x] staged diff reviewed
-* [ ] Stage 3 commit created
-* [ ] working tree clean after commit
+* [x] Stage 3 commit created
+* [x] working tree clean after commit
 * [ ] push performed only after Product Owner confirmation
 * [ ] Stage 3 → Stage 4 Context Handoff prepared in Russian
 * [ ] Stage 4 new-chat prompt prepared in Russian
@@ -1245,7 +1245,13 @@ Current source classifications:
 
 The frozen minimum requirement of three technically strong retailer candidates has been satisfied.
 
-Stage 3 is not complete yet.
+Stage 3 implementation and local validation are complete.
+
+Final closeout remains pending:
+
+* push after Product Owner confirmation;
+* Russian Stage 3 → Stage 4 Context Handoff;
+* Russian Stage 4 new-chat prompt.
 
 Next work:
 
