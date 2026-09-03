@@ -220,5 +220,5 @@ My primary professional direction is frontend development, while
 CUMPAVIO also gives me practical experience with application architecture,
 testing and data-platform foundations.
 
-GitHub ·
-LinkedIn
+[GitHub](https://github.com/SuhihAlex) ·
+[LinkedIn](https://www.linkedin.com/in/alexandr-suhih-1a4821289/)
