@@ -1,217 +1,224 @@
 # CUMPAVIO
 
-CUMPAVIO is a Moldova-first shopping intelligence platform.
+**Moldova-first shopping intelligence platform — in development.**
 
-Core principle:
+CUMPAVIO is a product engineering project focused on helping users
+understand products, retailer offers and price history before making
+a purchase decision.
+
+**Core principle:**
 
 **Data → Intelligence → Decision**
 
 Current development status:
 
-**Stage 1 — Repository & Engineering Foundation**
+**Stage 3 complete — Data Feasibility & First Store Proof**
 
-The product scope is frozen in:
-
-`docs/product-contract.md`
-
-That document is the single source of truth for CUMPAVIO V1.
+The project is being developed stage by stage under a frozen V1 Product Contract.
 
 ---
 
-## V1 Scope
+## Current Status
+
+CUMPAVIO is currently an **engineering and data foundation project**.
+
+Implemented foundations include:
+
+- Next.js application foundation
+- React and TypeScript strict mode
+- Tailwind CSS
+- ESLint
+- Vitest and React Testing Library
+- GitHub Actions CI
+- local Supabase development
+- PostgreSQL migrations
+- canonical and source-data schema boundaries
+- Row Level Security
+- generated TypeScript database types
+- pgTAP database tests
+- retailer data feasibility research
+- constrained First Store Proof
+- source provenance and price observation models
+
+The public shopping interface is **not implemented yet**.
+
+Production retailer ingestion has **not started yet**.
+
+---
+
+## Product Direction
 
 Initial market:
 
-- Moldova
+**Moldova**
 
 Initial categories:
 
 - Smartphones
 - Laptops
 
-V1 user interface languages:
+V1 interface languages:
 
-- Romanian — primary/default
+- Romanian — primary
 - Russian — secondary
 
-Current development copy may use Russian for implementation convenience.
+The long-term product flow is:
 
-English UI is Post-MVP.
+```text
+Retailer Data
+→ Source Observation
+→ Normalization
+→ Product Matching
+→ Canonical Product
+→ Retailer Offers
+→ Price History
+→ Price Intelligence
+→ Public Shopping Experience
+```
 
----
+## Web Foundation
 
-## Technology Foundation
+The current application foundation uses:
 
-Current web foundation:
+Next.js 16
+React 19
+TypeScript
+Tailwind CSS 4
+App Router
+ESLint
+Vitest
+React Testing Library
 
-- Next.js 16
-- React 19
-- TypeScript strict
-- Tailwind CSS 4
-- ESLint
-- Vitest
-- React Testing Library
-- GitHub Actions CI
+### Current Frontend Status
 
-Planned future platform direction includes Supabase/PostgreSQL and a separate Python crawler runtime, but those are not implemented during Stage 1.
+The frontend is intentionally minimal at the current project stage.
 
----
+Product pages, search, comparison interfaces and final product design
+have not been implemented yet.
 
-## Requirements
+Current frontend work focuses on maintaining a clean application
+foundation for later product stages.
 
-Local development currently uses:
+## Data Foundation
 
-- Node.js 22
-- npm 10
+Current data-engineering work includes:
 
-Verified Stage 1 baseline:
+Supabase local development
+PostgreSQL
+migrations-first workflow
+canonical product data model
+retailer/source provenance
+Product Family and Product Variant separation
+offers and price observations
+price quality states
+matching decision audit records
+Row Level Security
+generated TypeScript database types
+database validation with pgTAP
 
-- Node.js `22.16.0`
-- npm `10.9.2`
+The project intentionally separates retailer-source data from
+canonical product data.
 
----
+## Data Feasibility
 
-## Local Setup
+Stage 3 evaluated retailer-data feasibility for the V1 categories.
 
-Clone the repository:
+The current engineering direction validated multiple retailer
+candidates and completed a constrained First Store Proof.
 
-git clone https://github.com/SuhihAlex/cumpavio.git
-cd cumpavio
+This stage did not introduce production crawling or automated
+multi-store ingestion.
 
-Install dependencies:
+## Testing and Quality
 
-npm ci
+Web quality checks include:
 
-Start development:
-
-npm run dev
-
-The application is available by default at:
-
-http://localhost:3000
-
----
-
-## Environment Variables
-
-Stage 1 currently requires no environment variables.
-
-When environment variables are introduced:
-
-1. copy .env.example to .env.local;
-2. keep secrets server-only;
-3. never commit .env.local or other real environment files;
-4. use NEXT_PUBLIC_ only for values intentionally exposed to the browser.
-
----
-
-## Quality Commands
-
-Lint:
-
+```text
 npm run lint
-
-Typecheck:
-
 npm run typecheck
-
-Tests:
-
 npm test
-
-Watch tests:
-
-npm run test:watch
-
-Production build:
-
 npm run build
+```
 
----
+GitHub Actions runs these checks for pushes and pull requests targeting
+the main branch.
 
-## CI
+Database validation is maintained separately through the Supabase
+local-development workflow and pgTAP tests.
 
-GitHub Actions runs on pushes and pull requests targeting main.
+## Current Technology
 
-The CI quality job performs:
+### Application
 
-1. npm ci
-2. npm run lint
-3. npm run typecheck
-4. npm test
-5. npm run build
+Next.js · React · TypeScript · Tailwind CSS
 
----
+### Testing
+
+Vitest · React Testing Library
+
+### Data / Platform
+
+Supabase · PostgreSQL · RLS · pgTAP
+
+### Engineering
+
+Git · GitHub Actions · ESLint
+
+## Not Implemented Yet
+
+The repository does not currently provide:
+
+production retailer crawling
+scheduled ingestion
+large-scale canonical catalog population
+automated product matching
+public product search
+category browsing
+product pages
+offer comparison UI
+price-history UI
+deterministic price intelligence
+finished visual design
+production deployment
+
+These capabilities belong to later project stages.
 
 ## Repository Structure
-
+```text
 cumpavio/
-├─ .github/
-│  └─ workflows/
-│     └─ ci.yml
-├─ docs/
-│  ├─ product-contract.md
-│  ├─ project-state.md
-│  └─ stages/
-├─ src/
-│  ├─ __tests__/
-│  └─ app/
-├─ .env.example
-├─ AGENTS.md
-├─ CLAUDE.md
-├─ eslint.config.mjs
-├─ next.config.ts
-├─ package.json
-├─ postcss.config.mjs
-├─ tsconfig.json
-└─ vitest.config.mts
+├── .github/
+│   └── workflows/
+├── docs/
+│   ├── product-contract.md
+│   ├── project-state.md
+│   └── stages/
+├── src/
+│   ├── __tests__/
+│   ├── app/
+│   └── types/
+├── supabase/
+│   ├── migrations/
+│   └── tests/
+├── package.json
+└── README.md
+```
+## Development Approach
 
----
+CUMPAVIO is intentionally developed in controlled stages.
 
-## Engineering Rules
+The Product Contract defines the frozen V1 scope, while
+docs/project-state.md records the current implementation state.
 
-Do not introduce functionality outside the active Stage.
+This approach keeps product decisions, engineering boundaries and
+implemented functionality separate from future plans.
 
-Important frozen architecture rules include:
+## Author
 
-user requests never synchronously crawl retailer websites;
-crawler runtime remains separate from interactive web runtime;
-raw/source data remains separate from canonical data;
-Product Family and Product Variant are distinct concepts;
-uncertain products must not be automatically merged;
-price observations remain source-attributable;
-rejected anomalies must not corrupt price history;
-PostgreSQL search is preferred before introducing a separate search engine;
-V1 contains no public accounts;
-V1 contains no user-facing AI.
+Built by Alexandr Suhih as an ongoing product engineering project.
 
-See:
+My primary professional direction is frontend development, while
+CUMPAVIO also gives me practical experience with application architecture,
+testing and data-platform foundations.
 
-docs/product-contract.md
-
-for the complete V1 contract.
-
----
-
-## Current Stage
-
-Stage 1 only establishes the engineering foundation.
-
-Stage 1 does not implement:
-
-Supabase business schema;
-retailer connectors;
-crawling;
-normalization;
-matching;
-search;
-product pages;
-comparison;
-price intelligence;
-final Product Design.
-
-See:
-
-docs/stages/stage-01.md
-
-for the current Stage record.
+GitHub ·
+LinkedIn
