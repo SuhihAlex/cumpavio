@@ -214,11 +214,10 @@ implemented functionality separate from future plans.
 
 ## Author
 
-Built by Alexandr Suhih as an ongoing product engineering project.
+Built by **Alexandr Suhih** as an ongoing product engineering project.
 
-My primary professional direction is frontend development, while
-CUMPAVIO also gives me practical experience with application architecture,
-testing and data-platform foundations.
+AI-Native Product Engineer and Full-Stack Developer focused on
+SaaS, data-driven products, AI integration and internal business tools.
 
 [GitHub](https://github.com/SuhihAlex) ·
 [LinkedIn](https://www.linkedin.com/in/alexandr-suhih-1a4821289/)
